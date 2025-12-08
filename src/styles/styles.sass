@@ -6,3 +6,237 @@ html, body
     margin: 0 auto
     overflow-x: hidden
     font-family: variables.$font-family-body
+
+h1, h2, h3, h4, h5, h6
+    margin: 1rem 0
+
+ul 
+    padding-inline-start: 0
+
+    li 
+        list-style-type: none
+
+a
+    text-decoration: none
+    color: variables.$dark-blue
+    text-transform: uppercase
+
+p
+    padding: 4rem 0
+
+button
+    cursor: pointer
+    border: none
+
+.icon-container
+    @include mixins.flex-center
+
+.container
+    padding-top: 4rem
+
+/* Header component + children */
+
+.header-container
+    @include mixins.flex-start-space-between
+
+    .header-logo
+        img
+            width: variables.$image-size-large
+            height: auto
+            position: relative
+            z-index: 10
+
+    .header-bg
+        position: relative
+        top: 0
+        right: 0
+
+        img
+            width: variables.$image-size-Xlarge
+            height: fit-content
+            position: absolute
+            right: 0
+
+    .header-nav
+        border: 1px solid variables.$pink-border
+        padding: 0.5rem 2rem
+        border-radius: 2rem
+        position: absolute
+        top: 13%
+        left: 50%
+        transform: translate(-50%, -50%)
+        z-index: 2
+
+        a:hover
+            color: variables.$pink-border
+            transition: color 0.3s ease-in-out
+
+/* NavItemProps component */
+
+.nav-item-props-container
+    width: fit-content
+
+    ul
+        @include mixins.flex-center
+        gap: 3rem
+
+/* MobileNav */
+
+.header-mobile-nav
+    display: none
+
+.mobile-nav-open
+    @include mixins.flex-column-start
+    justify-content: space-between
+    align-items: center
+    width: 70vw
+    height: 100vh
+    position: fixed
+    top: 0
+    left: 0
+    background-color: variables.$background-color-main
+    border: 1px solid variables.$pink-border
+    border-radius: 0 1rem 1rem 0
+    z-index: 4
+    overflow: hidden
+
+    ul
+        @include mixins.flex-column-center
+        gap: 2rem
+        position: relative
+        z-index: 5
+        padding: 2rem 2rem 0 2rem
+    
+    img
+        display: flex
+        transform: rotate(180deg)
+        object-fit: contain
+        width: 100vw
+        height: 100%
+
+    .mobile-close-btn 
+        position: absolute
+        top: 1rem
+        right: 1rem
+        border: none
+        cursor: pointer
+        z-index: 10 
+        
+
+    .mobile-nav-image
+        @include mixins.flex-center
+        width: 100%
+
+        img
+            width: 100%
+            height: auto
+            object-fit: contain
+            position: absolute
+            top: 0
+            right: 0
+            transform: rotate(0deg)
+
+.open-menu-icon, .mobile-close-btn
+    background-color: variables.$background-color-main
+    padding: 0.5rem
+    z-index: 3
+    top: 3%
+    right: 10%
+    position: absolute
+    border-radius: 10px
+
+
+.open-menu-icon 
+    &.open 
+        background-color: transparent
+        box-shadow: none
+
+.overlay 
+    position: fixed
+    inset: 0
+    background: rgba(0, 0, 0, 0)
+    pointer-events: none
+    opacity: 0
+    transition: opacity 0.3s ease
+
+.overlay--visible 
+    pointer-events: all
+    opacity: 0.9
+    background: rgba(0, 0, 0, 0.275)
+
+/* Text component */
+
+.text-container
+    text-align: center
+    padding: 1rem 2rem
+
+/* Home */
+
+.home-container
+    .home-text
+        padding: 2rem 0
+
+    img
+        width: 100%
+        height: 80vh
+        object-fit: cover
+        object-position: top
+        /* box-shadow: variables.$box-shadow */
+
+.home-container, .footer-container
+    h1
+        font-size: variables.$font-size-small
+        font-weight: 300
+        text-transform: uppercase
+
+    h2
+        font-size: variables.$font-size-large
+
+    .home-link-container
+        position: relative
+        img
+            object-position: center
+
+        h1
+            @include mixins.absolute-center
+            color: variables.$white
+            font-size: variables.$font-size-XXlarge
+            text-shadow: 2px 2px 4px variables.$black
+            font-weight: 600
+
+/* Work Page */
+
+.work-container
+    p
+        font-size: variables.$font-size-small
+        font-weight: 300
+
+
+/* Icons SVG */
+
+.icons-svg-container, .footer-container
+    @include mixins.flex-center
+    gap: 2rem
+
+/* Footer */
+
+.footer-container
+    @include mixins.flex-space-between
+    padding: 2rem 4rem 2rem 2.5rem
+
+
+/* Media queries */
+
+@media (max-width: variables.$breakpoint-md-sm)
+    .header-mobile-nav
+        display: block
+
+    .header-nav
+        display: none
+
+    .container
+        padding-top: 2rem
+
+    .footer-container
+        @include mixins.flex-column-center
+        padding: 0
