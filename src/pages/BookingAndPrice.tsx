@@ -1,7 +1,10 @@
+import DateTimePicker from "../components/DateTimePicker";
 
 function AppointmentsAndPrice() {
   return (
-    <div>AppointmentsAndPrice</div>
+    <main>
+      <DateTimePicker />
+    </main>
   )
 }
 
