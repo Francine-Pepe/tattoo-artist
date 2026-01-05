@@ -7,6 +7,10 @@ import BookingAndPrice from "./pages/BookingAndPrice";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Footer from "./pages/Footer";
+import { validateEnvironment } from "./constants";
+
+// Validate environment variables on app start
+validateEnvironment();
 
 function App() {
   return (
