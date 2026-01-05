@@ -1,8 +1,8 @@
-import NavItemProps from "./props/NavItemProps";
+import NavItemProps from "../components/props/NavItemProps";
 import { navigationItem } from "../data";
-import Image from "./props/Image";
+import Image from "../components/props/Image";
 import { logoData, headerBgData } from "../data";
-import MobileNav from "./MobileNav";
+import MobileNav from "../components/MobileNav";
 import { NavLink } from "react-router-dom";
 
 function Navigation() {
