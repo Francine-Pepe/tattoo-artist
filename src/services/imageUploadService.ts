@@ -2,6 +2,10 @@ import { IMGBB_API_KEY } from "../constants";
 
 export class ImageUploadService {
   static async uploadToImgBB(file: File): Promise<string> {
+    if (!IMGBB_API_KEY) {
+      throw new Error("ImgBB API key is not configured");
+    }
+
     const formData = new FormData();
     formData.append("image", file);
 
