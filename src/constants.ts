@@ -1,6 +1,4 @@
-// Configuration values from environment variables with fallbacks
-export const IMGBB_API_KEY = import.meta.env.VITE_IMGBB_API_KEY || "";
-export const MAX_FILE_SIZE = parseInt(
+export const IMGBB_API_KEY = import.meta.env.VITE_IMGBB_API_KEY;export const MAX_FILE_SIZE = parseInt(
   import.meta.env.VITE_MAX_FILE_SIZE || "2097152",
   10
 );
