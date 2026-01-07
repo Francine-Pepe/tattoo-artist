@@ -56,3 +56,12 @@ export type TextProps = {
   data: TextItem[];
   text?: TextItem[];
 };
+
+export interface AppointmentData {
+  clientName: string;
+  clientEmail: string;
+  clientPhone: string;
+  tattooPlace: string;
+  tattooSize: string;
+  imageUrl?: string;
+}
