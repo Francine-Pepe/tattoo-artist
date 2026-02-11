@@ -1,8 +1,9 @@
 .date-time-picker-container {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 90vw;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -206,8 +207,7 @@
   flex-direction: column;
   gap: 15px;
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 80%;
 }
 
 .form-group input {
@@ -272,4 +272,16 @@
   background: #eee;
   color: #999;
   cursor: not-allowed;
+}
+
+.container {
+  padding-top: 8rem;
+}
+
+.rdp-chevron {
+  fill: #011226;
+}
+
+.rdp-day_button {
+  color: #a0514c;
 }
