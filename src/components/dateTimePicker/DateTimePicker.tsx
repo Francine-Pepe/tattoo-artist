@@ -12,8 +12,8 @@ import { useImagePreview } from "../../hooks/useImagePreview";
 import { FileUploadArea } from "./FileUploadArea";
 import { FilePreview } from "./FilePreview";
 import { SubmitButton } from "./SubmitButton";
-import "../dateTimePicker/styles.css";
 import { ImageUploadService } from "../../services/imageUploadService";
+import { type FormData } from "../../types";
 
 export const DateTimePicker: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date>();
@@ -21,7 +21,7 @@ export const DateTimePicker: React.FC = () => {
   const [bookedSlots, setBookedSlots] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     clientName: "",
     clientEmail: "",
     clientPhone: "",
@@ -31,6 +31,14 @@ export const DateTimePicker: React.FC = () => {
 
   const { imageState, setImage, removeImage } = useImagePreview();
   const slots = generateSlots();
+
+  const labels: Record<keyof FormData, string> = {
+    clientName: "Your name",
+    clientEmail: "Email address",
+    clientPhone: "Phone number",
+    tattooPlace: "Tattoo placement",
+    tattooSize: "Tattoo size",
+  };
 
   /* ----------------------------------
      Load booked slots for selected day
@@ -51,7 +59,8 @@ export const DateTimePicker: React.FC = () => {
   };
 
   const handleInputChange =
-    (field: keyof typeof formData) => (e: ChangeEvent<HTMLInputElement>) => {
+    (field: keyof typeof formData) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       setFormData((prev) => ({ ...prev, [field]: e.target.value }));
     };
 
@@ -72,6 +81,13 @@ export const DateTimePicker: React.FC = () => {
   };
 
   const handleSubmit = async () => {
+    if (!validateForm()) {
+      alert("Please fill all fields and upload an image");
+      return;
+    }
+
+    setLoading(true);
+
     if (!selectedDate || !timeValue || !imageState.file) {
       alert("Please fill all fields and upload an image");
       return;
@@ -121,7 +137,9 @@ export const DateTimePicker: React.FC = () => {
         image_url: imageUrl,
       });
 
-      alert("✅ Appointment booked! Check your email.");
+      alert(
+        "✅ Appointment booked! You will receive a confirmation email soon."
+      );
       resetForm();
     } catch (err) {
       console.error(err);
@@ -148,9 +166,9 @@ export const DateTimePicker: React.FC = () => {
      Render
   ----------------------------------- */
   return (
-    <main className="date-time-picker-container">
+    <main className="date-time-picker-container container">
       {/* Date Picker */}
-      <section>
+      <section className="date-time-selector">
         <DayPicker
           mode="single"
           selected={selectedDate}
@@ -159,7 +177,7 @@ export const DateTimePicker: React.FC = () => {
         />
 
         {selectedDate && (
-          <>
+          <section className="time-slots">
             <h4>Select a time</h4>
             <div className="slots">
               {slots.map((slot) => (
@@ -174,7 +192,7 @@ export const DateTimePicker: React.FC = () => {
                 </button>
               ))}
             </div>
-          </>
+          </section>
         )}
       </section>
 
@@ -189,15 +207,17 @@ export const DateTimePicker: React.FC = () => {
         </p>
 
         <div className="form-group">
-          {Object.entries(formData).map(([key, value]) => (
-            <input
-              key={key}
-              value={value}
-              placeholder={key}
-              onChange={handleInputChange(key as any)}
-              required
-            />
-          ))}
+          {(Object.entries(formData) as [keyof FormData, string][]).map(
+            ([key, value]) => (
+              <input
+                key={key}
+                value={value}
+                placeholder={labels[key]}
+                onChange={handleInputChange(key)}
+                required
+              />
+            )
+          )}
 
           {/* Image Upload */}
           <FileUploadArea
@@ -224,6 +244,7 @@ export const DateTimePicker: React.FC = () => {
             loading={loading}
             hasFile={!!imageState.file}
             onClick={handleSubmit}
+            isValid={validateForm()}
           />
         </div>
       </section>
