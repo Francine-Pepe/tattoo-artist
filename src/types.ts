@@ -46,7 +46,7 @@ export type IconProps = {
 };
 
 export type TextItem = {
-  id: number;
+  id?: string;
   heading?: string;
   subHeading?: string;
   text?: string;
@@ -65,3 +65,17 @@ export interface AppointmentData {
   tattooSize: string;
   imageUrl?: string;
 }
+
+export interface SubmitButtonProps {
+  loading: boolean;
+  isValid: boolean;
+  onClick: () => void;
+}
+
+export type FormData = {
+  clientName: string;
+  clientEmail: string;
+  clientPhone: string;
+  tattooPlace: string;
+  tattooSize: string;
+};
