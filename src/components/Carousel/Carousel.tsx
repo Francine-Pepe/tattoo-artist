@@ -157,9 +157,9 @@ export default function Carousel({
             flexWrap: "wrap",
             mt: 3,
             p: 1,
-            borderTop: "1px solid",
+/*             borderTop: "1px solid",
             borderColor: "rgba(218, 155, 150, 0.8)",
-            pt: 3,
+            pt: 3, */
           }}
         >
           {images.map((image, index) => (
