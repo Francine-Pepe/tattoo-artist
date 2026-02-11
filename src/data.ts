@@ -9,6 +9,8 @@ import Fauna from "./assets/images/tattoo-8.webp";
 import Flora from "./assets/images/tattoo-5.webp";
 import Abstract from "./assets/images/tattoo-12.webp";
 import Geometric from "./assets/images/tattoo-3.webp";
+import FooterBgImage from "./assets/images/footer-bg.png"
+import aboutImage from "./assets/images/about-bg.png";
 
 export const navigationItem = [
   {
@@ -108,7 +110,7 @@ export const socialMediaData = [
 
 export const workTextData = [
   {
-    id: 1,
+    id: "work",
     text: "Every design grows from a blend of natural forms and your own story, creating work that feels organic, intimate, and uniquely yours.",
   },
 ];
@@ -191,5 +193,20 @@ export const appointmentData = [
     type: "text",
     accept: "",
     placeholder: "e.g. 10cm x 5cm",
+  },
+];
+
+export const aboutData = {
+  id: "about",
+  image: aboutImage,
+  alt: "About Image",
+  text: "Every tattoo tells a story, and every story deserves to grow naturally. With ink as our medium and nature as our muse, we craft designs that are delicate as petals, strong as roots, and as unique as the person wearing them.\nFrom floral whispers to fauna-inspired flourishes, each piece is a collaboration—an expression of your journey, your passions, and your dreams. Here, tattoos aren’t just art; they’re living stories, rooted in care, creativity, and a love for the beauty that surrounds us.\n\nI am a tattoo artist who sees the body as a living garden — a place where stories take root and beauty grows in quiet, intentional ways. I work with gentle lines, botanical forms, and nature-inspired details, creating pieces that feel soft, intimate, and deeply personal.\n\nGuided by a love for flora, fauna, and the poetic rhythms of nature, I shape each design with patience and care. My work blends fine-line delicacy with organic movement, giving every tattoo the feeling of something tender and alive — like a petal caught in a slow breeze.\nFor me, tattooing is more than ink on skin: it’s a collaboration, a conversation, a shared moment where your ideas bloom into something uniquely yours. My studio is a calm, welcoming space where clients feel safe, seen, and gently encouraged to express the stories they carry.",
+}
+
+export const footerBgData = [
+  {
+    id: 1,
+    image: FooterBgImage,
+    alt: "Footer Background Image",
   },
 ];

@@ -3,6 +3,7 @@ import React from "react";
 interface SubmitButtonProps {
   loading: boolean;
   hasFile: boolean;
+  isValid: boolean;
   onClick: () => void;
 }
 
