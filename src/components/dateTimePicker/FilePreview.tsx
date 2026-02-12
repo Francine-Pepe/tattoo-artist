@@ -14,16 +14,24 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
 }) => {
   if (!imageState.file) return null;
 
+  const thumbnailSrc = imageState.thumbnail ?? imageState.preview ?? undefined;
+
+  const previewSrc = imageState.preview ?? undefined;
+
   return (
     <div className="file-preview-container">
       <div className="file-info">
         <div className="thumbnail-container">
-          <img
-            src={imageState.thumbnail || imageState.preview}
-            alt="Thumbnail preview"
-            className="thumbnail"
-          />
+          {thumbnailSrc && (
+            <img
+              src={thumbnailSrc}
+              alt="Thumbnail preview"
+              className="thumbnail"
+            />
+          )}
+
           <button
+            type="button"
             className="remove-button"
             onClick={onRemove}
             aria-label="Remove image"
@@ -31,6 +39,7 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
             ✕
           </button>
         </div>
+
         <div className="file-details">
           <p className="filename">{imageState.file.name}</p>
           <p className="file-size">
@@ -38,20 +47,18 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
           </p>
           <p className="status">✅ Ready to send</p>
         </div>
+
         <button type="button" onClick={onChange} className="change-button">
           Change
         </button>
       </div>
-      {imageState.preview && (
+
+      {previewSrc && (
         <div className="full-preview">
           <p className="preview-label">
             <strong>Full Preview:</strong>
           </p>
-          <img
-            src={imageState.preview}
-            alt="Full preview"
-            className="preview-image"
-          />
+          <img src={previewSrc} alt="Full preview" className="preview-image" />
         </div>
       )}
     </div>
