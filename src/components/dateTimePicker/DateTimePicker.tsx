@@ -166,7 +166,7 @@ export const DateTimePicker: React.FC = () => {
      Render
   ----------------------------------- */
   return (
-    <main className="date-time-picker-container container">
+    <main className="date-time-picker-container ">
       {/* Date Picker */}
       <section className="date-time-selector">
         <DayPicker
@@ -198,13 +198,13 @@ export const DateTimePicker: React.FC = () => {
 
       {/* Form */}
       <section className="date-time-picked">
-        <p>
+        <span>
           <strong>Date:</strong>{" "}
           {selectedDate ? selectedDate.toLocaleDateString("en-GB") : "--"}
-        </p>
-        <p>
+        </span>
+        <span>
           <strong>Time:</strong> {timeValue || "--"}
-        </p>
+        </span>
 
         <div className="form-group">
           {(Object.entries(formData) as [keyof FormData, string][]).map(
