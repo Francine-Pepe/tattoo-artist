@@ -4,8 +4,8 @@ import { type ImageState } from "../types/index";
 export const useImagePreview = () => {
   const [imageState, setImageState] = useState<ImageState>({
     file: null,
-    preview: null,
-    thumbnail: null,
+    preview: undefined,
+    thumbnail: undefined,
   });
 
   const cleanupUrls = useCallback(() => {
@@ -19,14 +19,18 @@ export const useImagePreview = () => {
 
   const removeImage = useCallback(() => {
     cleanupUrls();
-    setImageState({ file: null, preview: null, thumbnail: null });
+    setImageState({
+      file: null,
+      preview: undefined,
+      thumbnail: undefined,
+    });
   }, [cleanupUrls]);
 
   const setImage = useCallback(
     (file: File, preview: string, thumbnail: string) => {
       setImageState({ file, preview, thumbnail });
     },
-    []
+    [],
   );
 
   return { imageState, setImage, removeImage, cleanupUrls };
