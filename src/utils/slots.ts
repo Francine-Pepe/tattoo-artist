@@ -1,7 +1,6 @@
 export const generateSlots = (
   startHour = 10,
   endHour = 18,
-  
 ) => {
   const slots: string[] = [];
 

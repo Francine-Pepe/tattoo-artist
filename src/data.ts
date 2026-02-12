@@ -62,7 +62,7 @@ export const homeImageData = [
 
 export const textData = [
   {
-    id: "home",
+    id: "homeText",
     heading: "Ink Rooted in Nature",
     subHeading: "Fine, floral-inspired creations for every kind of story.",
   },
@@ -79,7 +79,7 @@ export const homeWorkItems = [
 
 export const footerTextData = [
   {
-    id: "footer",
+    id: "footerText",
     heading: "Let´s work together",
   },
 ];
